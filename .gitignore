@@ -4,8 +4,10 @@ __pycache__/
 
 docs/build/
 docs/source/en/dev/c/generated/*.rst
+docs/source/en/dev/c/generated/*.rst.include
 !docs/source/en/dev/c/generated/README.md
 docs/source/zh/dev/c/generated/*.rst
+docs/source/zh/dev/c/generated/*.rst.include
 !docs/source/zh/dev/c/generated/README.md
 
 xml/

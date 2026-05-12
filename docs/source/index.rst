@@ -1,11 +1,25 @@
-AXCL Documentation Portal
-=========================
+Welcome to AXCL's documentation!
+================================
 
-This site hosts the AXCL Read the Docs design skeleton. Select a language tree below.
+AXCL provides the public documentation skeleton, bilingual navigation, and the
+generated C/C++ API reference used for Read the Docs deployment validation.
+
+Contents
+--------
+
+* :doc:`English documentation <en/index>`
+* :doc:`中文文档 <zh/index>`
+* :doc:`Generated C/C++ API <en/dev/c/index>`
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Languages
+   :hidden:
+   :maxdepth: 2
 
    en/index
    zh/index
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`search`
