@@ -1,0 +1,179 @@
+:root {
+    --axcl-ink: #132238;
+    --axcl-ink-soft: #41566f;
+    --axcl-sky: #0b7fc2;
+    --axcl-sky-deep: #085f92;
+    --axcl-cyan: #2ec5d3;
+    --axcl-amber: #ffb44d;
+    --axcl-surface-alt: #f4f8fb;
+    --axcl-border: rgba(19, 34, 56, 0.12);
+    --axcl-shadow: 0 18px 40px rgba(11, 46, 77, 0.12);
+}
+
+.wy-side-nav-search,
+.wy-nav-top {
+    background: linear-gradient(135deg, #0a2942 0%, #0b7fc2 55%, #2ec5d3 100%);
+}
+
+.wy-side-nav-search>a,
+.wy-nav-top a {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.wy-side-nav-search .wy-dropdown>a img.logo,
+.wy-side-nav-search>a img.logo {
+    max-width: 210px;
+}
+
+.wy-menu-vertical li.current>a {
+    border-left: 3px solid var(--axcl-cyan);
+}
+
+.wy-nav-content {
+    max-width: 1180px;
+    background:
+        radial-gradient(circle at top right, rgba(46, 197, 211, 0.10), transparent 30%),
+        linear-gradient(180deg, #fbfdff 0%, #f6f9fc 100%);
+}
+
+.rst-content h1,
+.rst-content h2,
+.rst-content h3,
+.rst-content h4 {
+    color: var(--axcl-ink);
+}
+
+.rst-content a {
+    color: var(--axcl-sky-deep);
+}
+
+.rst-content .section>p {
+    color: var(--axcl-ink-soft);
+}
+
+.axcl-hero {
+    margin: 1.25rem 0 2rem;
+    padding: 1.5rem 1.5rem 1.4rem;
+    border: 1px solid rgba(46, 197, 211, 0.28);
+    border-radius: 20px;
+    background:
+        linear-gradient(135deg, rgba(11, 127, 194, 0.12), rgba(46, 197, 211, 0.06)),
+        linear-gradient(180deg, #ffffff, #f7fbfe);
+    box-shadow: var(--axcl-shadow);
+}
+
+.axcl-hero-compact {
+    margin-top: 0.8rem;
+}
+
+.axcl-eyebrow {
+    margin: 0 0 0.45rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--axcl-sky-deep);
+}
+
+.axcl-lead {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--axcl-ink);
+}
+
+.axcl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+}
+
+.axcl-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(11, 127, 194, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--axcl-ink) !important;
+    font-weight: 700;
+    text-decoration: none !important;
+    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.axcl-button:hover,
+.axcl-button:focus {
+    transform: translateY(-1px);
+    border-color: rgba(11, 127, 194, 0.45);
+    box-shadow: 0 10px 24px rgba(11, 95, 146, 0.12);
+}
+
+.axcl-button-primary {
+    background: linear-gradient(135deg, var(--axcl-sky-deep), var(--axcl-sky));
+    color: #ffffff !important;
+}
+
+.axcl-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 1.6rem;
+}
+
+.axcl-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-height: 186px;
+    padding: 1.2rem;
+    border: 1px solid var(--axcl-border);
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff, var(--axcl-surface-alt));
+    box-shadow: 0 10px 28px rgba(19, 34, 56, 0.08);
+    text-decoration: none !important;
+    color: var(--axcl-ink) !important;
+    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.axcl-card:hover,
+.axcl-card:focus {
+    transform: translateY(-2px);
+    border-color: rgba(46, 197, 211, 0.45);
+    box-shadow: 0 18px 34px rgba(11, 46, 77, 0.12);
+}
+
+.axcl-card strong {
+    font-size: 1.05rem;
+}
+
+.axcl-card span {
+    line-height: 1.6;
+    color: var(--axcl-ink-soft);
+}
+
+.axcl-card-kicker {
+    color: var(--axcl-sky-deep) !important;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .axcl-hero {
+        padding: 1.1rem;
+        border-radius: 16px;
+    }
+
+    .axcl-actions {
+        flex-direction: column;
+    }
+
+    .axcl-button {
+        width: 100%;
+    }
+}

@@ -19,18 +19,25 @@ API_ROOT_DIR = SOURCE_DIR / "en" / "dev" / "c" / "generated"
 API_ROOT_FILE = API_ROOT_DIR / "api_root.rst"
 
 
-def load_generate_api_index():
-    module_path = ROOT_DIR / "docs" / "tools" / "gen_api_index.py"
-    spec = importlib.util.spec_from_file_location("gen_api_index", module_path)
+def load_tool_function(module_name: str, file_name: str, function_name: str):
+    module_path = ROOT_DIR / "docs" / "tools" / file_name
+    spec = importlib.util.spec_from_file_location(module_name, module_path)
     if spec is None or spec.loader is None:
-        raise RuntimeError(f"Unable to load API index generator from {module_path}")
+        raise RuntimeError(f"Unable to load {function_name} from {module_path}")
 
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    return module.generate_api_index
+    return getattr(module, function_name)
 
 
-generate_api_index = load_generate_api_index()
+generate_api_index = load_tool_function(
+    "gen_api_index", "gen_api_index.py", "generate_api_index"
+)
+patch_exhale_function_signatures = load_tool_function(
+    "fix_exhale_function_signatures",
+    "fix_exhale_function_signatures.py",
+    "patch_exhale_function_signatures",
+)
 
 
 def write_api_placeholder(reason: str) -> None:
@@ -70,6 +77,10 @@ def run_doxygen() -> tuple[bool, str]:
         f"INPUT = {HEADERS_DIR}",
         "FILE_PATTERNS = *.h",
         "RECURSIVE = YES",
+        "ENABLE_PREPROCESSING = YES",
+        "MACRO_EXPANSION = YES",
+        "EXPAND_ONLY_PREDEF = YES",
+        "PREDEFINED = AXCL_EXPORT=",
         "GENERATE_HTML = NO",
         "GENERATE_LATEX = NO",
         "GENERATE_XML = YES",
@@ -117,6 +128,8 @@ templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 html_static_path = ["_static"]
 html_theme = "sphinx_rtd_theme"
+html_logo = "_static/img/axcl-logo.svg"
+html_css_files = ["css/custom.css"]
 html_theme_options = {
     "collapse_navigation": False,
     "sticky_navigation": True,
@@ -126,3 +139,13 @@ html_theme_options = {
 }
 html_title = project
 master_doc = "index"
+
+
+def setup(app):
+    if not extensions:
+        return
+
+    def patch_generated_sources(_app, _env, _docnames):
+        patch_exhale_function_signatures(API_ROOT_DIR, DOXYGEN_XML_DIR)
+
+    app.connect("env-before-read-docs", patch_generated_sources)
