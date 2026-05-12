@@ -19,6 +19,20 @@ API_ROOT_DIR = SOURCE_DIR / "en" / "dev" / "c" / "generated"
 API_ROOT_FILE = API_ROOT_DIR / "api_root.rst"
 
 
+def load_generate_api_index():
+    module_path = ROOT_DIR / "docs" / "tools" / "gen_api_index.py"
+    spec = importlib.util.spec_from_file_location("gen_api_index", module_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to load API index generator from {module_path}")
+
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.generate_api_index
+
+
+generate_api_index = load_generate_api_index()
+
+
 def write_api_placeholder(reason: str) -> None:
     API_ROOT_DIR.mkdir(parents=True, exist_ok=True)
     API_ROOT_FILE.write_text(
@@ -80,6 +94,7 @@ extensions: list[str] = []
 if can_enable_api_extensions():
     ok, message = run_doxygen()
     if ok:
+        generate_api_index(DOXYGEN_XML_DIR, API_ROOT_FILE)
         extensions = ["breathe", "exhale"]
     else:
         write_api_placeholder(message)
@@ -90,8 +105,8 @@ breathe_projects = {"axcl": str(DOXYGEN_XML_DIR)} if extensions else {}
 breathe_default_project = "axcl"
 exhale_args = {
     "containmentFolder": str(API_ROOT_DIR),
-    "rootFileName": "api_root.rst",
-    "rootFileTitle": "C/C++ API Reference",
+    "rootFileName": "exhale_root.rst",
+    "rootFileTitle": "C/C++ API Details",
     "doxygenStripFromPath": str(ROOT_DIR),
     "createTreeView": False,
     "exhaleExecutesDoxygen": False,
