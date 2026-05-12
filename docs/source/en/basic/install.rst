@@ -5,8 +5,6 @@ Prepare a local documentation environment with the minimal dependencies describe
 
 .. code-block:: bash
 
-   python3 -m venv .venv
-   . .venv/bin/activate
    pip install -r docs/requirements.txt
    make -C docs html
 

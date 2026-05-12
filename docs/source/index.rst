@@ -12,7 +12,6 @@ generated C/C++ API reference used for Read the Docs deployment validation.
        <div class="axcl-actions">
           <a class="axcl-button axcl-button-primary" href="en/index.html">Read in English</a>
           <a class="axcl-button" href="zh/index.html">查看中文文档</a>
-          <a class="axcl-button" href="en/dev/c/generated/api_root.html">Browse C API</a>
        </div>
     </section>
 
@@ -38,13 +37,6 @@ Contents
           <span>从公开头文件自动生成，先按功能分组进入，再查看详细符号页。</span>
        </a>
     </section>
-
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-
-   en/index
-   zh/index
 
 Indices and tables
 ------------------

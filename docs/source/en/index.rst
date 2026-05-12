@@ -17,6 +17,11 @@ Contents
 .. raw:: html
 
     <section class="axcl-card-grid">
+       <a class="axcl-card" href="basic/index.html">
+          <span class="axcl-card-kicker">Foundation</span>
+          <strong>Basic</strong>
+          <span>Overview, installation, and quick-start pages grouped as the first visible navigation section.</span>
+       </a>
        <a class="axcl-card" href="basic/overview.html">
           <span class="axcl-card-kicker">Foundation</span>
           <strong>Overview</strong>
@@ -53,9 +58,7 @@ Contents
    :hidden:
    :maxdepth: 2
 
-   basic/overview
-   basic/install
-   basic/quick_start
+   basic/index
    dev/index
    faq/index
 

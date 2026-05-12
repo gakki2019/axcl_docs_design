@@ -1,0 +1,17 @@
+{% macro render_items(items, level=1) -%}
+<ul>
+    {%- for item in items %}
+    <li class="toctree-l{{ level }}{% if item.active %} current{% endif %}{% if item.expanded %} axcl-nav-open{% endif %}"
+        {% if item.children %} aria-expanded="{{ 'true' if item.expanded else 'false' }}" {% endif %}>
+        <a class="reference internal{% if item.current %} current{% endif %}"
+            href="{{ (item.docname.rsplit('/', 1)[-1] ~ '.html') if item.current else pathto(item.docname) }}">{{
+            item.title }}</a>
+        {%- if item.children %}
+        {{ render_items(item.children, level + 1) }}
+        {%- endif %}
+    </li>
+    {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{{ render_items(axcl_nav_sections) }}

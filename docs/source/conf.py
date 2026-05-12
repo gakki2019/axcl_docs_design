@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import importlib.util
+import re
 import shutil
 import subprocess
 from pathlib import Path
+from typing import Any
 
 project = "AXCL Documentation"
 author = "Axera Semiconductor"
@@ -17,6 +19,36 @@ DOXYGEN_XML_DIR = DOXYGEN_DIR / "xml"
 HEADERS_DIR = ROOT_DIR / "include" / "external"
 API_ROOT_DIR = SOURCE_DIR / "en" / "dev" / "c" / "generated"
 API_ROOT_FILE = API_ROOT_DIR / "api_root.rst"
+
+LANGUAGE_LABELS = {
+    "en": "English",
+    "zh": "中文",
+}
+
+NAV_TITLES = {
+    "en": {
+        "basic": "Basic",
+        "overview": "Overview",
+        "install": "Installation",
+        "quick_start": "Quick Start",
+        "development": "Development",
+        "architecture": "Architecture",
+        "c_api": "C/C++ API",
+        "python_api": "Python API",
+        "faq": "FAQ",
+    },
+    "zh": {
+        "basic": "基础",
+        "overview": "概览",
+        "install": "安装指南",
+        "quick_start": "快速开始",
+        "development": "开发",
+        "architecture": "架构",
+        "c_api": "C/C++ API",
+        "python_api": "Python API",
+        "faq": "FAQ",
+    },
+}
 
 
 def load_tool_function(module_name: str, file_name: str, function_name: str):
@@ -137,15 +169,197 @@ html_theme_options = {
     "includehidden": True,
     "titles_only": False,
 }
+html_show_sourcelink = False
 html_title = project
 master_doc = "index"
 
 
-def setup(app):
-    if not extensions:
+def discover_source_docnames() -> set[str]:
+    docnames: set[str] = set()
+    for path in SOURCE_DIR.rglob("*.rst"):
+        if "_templates" in path.parts:
+            continue
+        docnames.add(path.relative_to(SOURCE_DIR).with_suffix("").as_posix())
+    return docnames
+
+
+def parse_api_group_nav() -> tuple[list[dict[str, str]], dict[str, str]]:
+    group_items: list[dict[str, str]] = []
+    detail_to_group: dict[str, str] = {}
+    if not API_ROOT_FILE.exists():
+        return group_items, detail_to_group
+
+    group_pattern = re.compile(r"- :doc:`([^`<]+)\s*<([^>]+)>`")
+    detail_pattern = re.compile(r":doc:`[^`<]+ <([^>]+)>`")
+    api_root_text = API_ROOT_FILE.read_text(encoding="utf-8")
+
+    for line in api_root_text.splitlines():
+        match = group_pattern.search(line.strip())
+        if match is None:
+            continue
+        title = match.group(1).strip()
+        target = match.group(2).strip()
+        full_docname = target if "/" in target else f"en/dev/c/generated/{target}"
+        group_items.append({"title": title, "docname": full_docname})
+
+        group_file = SOURCE_DIR / f"{full_docname}.rst"
+        if not group_file.exists():
+            continue
+
+        group_text = group_file.read_text(encoding="utf-8")
+        for detail_doc in detail_pattern.findall(group_text):
+            full_detail_doc = (
+                detail_doc
+                if "/" in detail_doc
+                else f"en/dev/c/generated/{detail_doc}"
+            )
+            detail_to_group[full_detail_doc] = full_docname
+
+    return group_items, detail_to_group
+
+
+SOURCE_DOCNAMES = discover_source_docnames()
+API_GROUP_ITEMS, API_DETAIL_TO_GROUP = parse_api_group_nav()
+
+
+def resolve_language(docname: str) -> str | None:
+    if docname.startswith("en/"):
+        return "en"
+    if docname.startswith("zh/"):
+        return "zh"
+    return None
+
+
+def normalize_docname_for_nav(docname: str) -> str:
+    if docname in API_DETAIL_TO_GROUP:
+        return API_DETAIL_TO_GROUP[docname]
+    if docname == "en/dev/c/generated/api_root":
+        return "en/dev/c/index"
+    if docname.startswith("en/dev/arch/") and docname != "en/dev/arch/index":
+        return "en/dev/arch/index"
+    if docname.startswith("zh/dev/arch/") and docname != "zh/dev/arch/index":
+        return "zh/dev/arch/index"
+    return docname
+
+
+def build_nav_tree(language: str) -> list[dict[str, Any]]:
+    titles = NAV_TITLES[language]
+    api_children = [dict(item, children=[]) for item in API_GROUP_ITEMS]
+    c_api_docname = f"{language}/dev/c/index"
+    if language == "zh":
+        api_children = [dict(item, children=[]) for item in API_GROUP_ITEMS]
+
+    return [
+        {
+            "title": titles["basic"],
+            "docname": f"{language}/basic/index",
+            "children": [
+                {"title": titles["overview"], "docname": f"{language}/basic/overview", "children": []},
+                {"title": titles["install"], "docname": f"{language}/basic/install", "children": []},
+                {"title": titles["quick_start"], "docname": f"{language}/basic/quick_start", "children": []},
+            ],
+        },
+        {
+            "title": titles["development"],
+            "docname": f"{language}/dev/index",
+            "children": [
+                {"title": titles["architecture"], "docname": f"{language}/dev/arch/index", "children": []},
+                {"title": titles["c_api"], "docname": c_api_docname, "children": api_children},
+                {"title": titles["python_api"], "docname": f"{language}/dev/python/index", "children": []},
+            ],
+        },
+        {
+            "title": titles["faq"],
+            "docname": f"{language}/faq/index",
+            "children": [],
+        },
+    ]
+
+
+def annotate_nav_tree(
+    items: list[dict[str, Any]], current_docname: str
+) -> tuple[list[dict[str, Any]], bool]:
+    annotated_items: list[dict[str, Any]] = []
+    subtree_active = False
+    for item in items:
+        children, child_active = annotate_nav_tree(item["children"], current_docname)
+        is_current = item["docname"] == current_docname
+        is_active = is_current or child_active
+        annotated_items.append(
+            {
+                **item,
+                "children": children,
+                "current": is_current,
+                "active": is_active,
+                "expanded": False,
+            }
+        )
+        subtree_active = subtree_active or is_active
+    return annotated_items, subtree_active
+
+
+def resolve_counterpart_docname(docname: str) -> str | None:
+    if docname == "index":
+        return None
+    if docname == "zh/dev/c/index":
+        return "en/dev/c/generated/api_root"
+    if docname.startswith("en/dev/c/generated/"):
+        return "zh/dev/c/index"
+    if docname.startswith("en/"):
+        candidate = f"zh/{docname[3:]}"
+        return candidate if candidate in SOURCE_DOCNAMES else "zh/index"
+    if docname.startswith("zh/"):
+        candidate = f"en/{docname[3:]}"
+        return candidate if candidate in SOURCE_DOCNAMES else "en/index"
+    return None
+
+
+def build_language_links(docname: str, language: str) -> list[dict[str, Any]]:
+    counterpart = resolve_counterpart_docname(docname)
+    if language == "en":
+        return [
+            {"label": LANGUAGE_LABELS["en"], "docname": docname, "current": True},
+            {
+                "label": LANGUAGE_LABELS["zh"],
+                "docname": counterpart or "zh/index",
+                "current": False,
+            },
+        ]
+    if language == "zh":
+        return [
+            {
+                "label": LANGUAGE_LABELS["en"],
+                "docname": counterpart or "en/index",
+                "current": False,
+            },
+            {"label": LANGUAGE_LABELS["zh"], "docname": docname, "current": True},
+        ]
+    return []
+
+
+def add_axcl_page_context(app, pagename: str, templatename: str, context, doctree) -> None:
+    del app, templatename, doctree
+    language = resolve_language(pagename)
+    context["axcl_is_root_landing"] = pagename == "index"
+    context["axcl_current_language"] = language
+    context["axcl_sidebar_home_doc"] = f"{language}/index" if language else "index"
+    context["axcl_language_links"] = build_language_links(pagename, language) if language else []
+    context["axcl_show_language_switch"] = bool(language)
+
+    if language is None:
+        context["axcl_nav_sections"] = []
         return
 
-    def patch_generated_sources(_app, _env, _docnames):
-        patch_exhale_function_signatures(API_ROOT_DIR, DOXYGEN_XML_DIR)
+    normalized_docname = normalize_docname_for_nav(pagename)
+    nav_sections, _ = annotate_nav_tree(build_nav_tree(language), normalized_docname)
+    context["axcl_nav_sections"] = nav_sections
 
-    app.connect("env-before-read-docs", patch_generated_sources)
+
+def setup(app):
+    app.connect("html-page-context", add_axcl_page_context)
+
+    if extensions:
+        def patch_generated_sources(_app, _env, _docnames):
+            patch_exhale_function_signatures(API_ROOT_DIR, DOXYGEN_XML_DIR)
+
+        app.connect("env-before-read-docs", patch_generated_sources)

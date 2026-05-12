@@ -1,0 +1,41 @@
+{% extends "!layout.html" %}
+
+{% block sidebartitle %}
+{% set _logo_url = logo_url|default(pathto('_static/' + (logo or ''), 1)) %}
+{% set _home_doc = axcl_sidebar_home_doc|default(root_doc|default(master_doc)) %}
+<a href="{{ pathto(_home_doc) }}" {% if not theme_logo_only %} class="icon icon-home" {% endif %}>
+    {% if not theme_logo_only %}{{ project }}{% endif %}
+    {% if logo or logo_url %}
+    <img src="{{ _logo_url }}" class="logo" alt="{{ _('Logo') }}" />
+    {% endif %}
+</a>
+
+{% if READTHEDOCS or DEBUG %}
+{% if theme_version_selector %}
+<div class="switch-menus">
+    <div class="version-switch"></div>
+</div>
+{% endif %}
+{% endif %}
+
+{% include "searchbox.html" %}
+{% endblock %}
+
+{% block menu %}
+{% if axcl_nav_sections %}
+{% include "axcl_nav.html" %}
+{% elif axcl_is_root_landing %}
+<div class="axcl-root-nav">
+    <p class="axcl-root-nav-title">Start Here</p>
+    <a class="reference internal" href="{{ pathto('en/index') }}">English Docs</a>
+    <a class="reference internal" href="{{ pathto('zh/index') }}">中文文档</a>
+</div>
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block mobile_nav %}
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="{{ pathto(axcl_sidebar_home_doc|default(master_doc)) }}">{{ project }}</a>
+{% endblock %}

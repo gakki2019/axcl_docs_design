@@ -63,6 +63,7 @@ axcl_docs_design/
 │   │   ├── en/
 │   │   │   ├── index.rst
 │   │   │   ├── basic/
+│   │   │   │   ├── index.rst
 │   │   │   │   ├── overview.rst
 │   │   │   │   ├── install.rst
 │   │   │   │   └── quick_start.rst
@@ -82,6 +83,7 @@ axcl_docs_design/
 │   │   ├── zh/
 │   │   │   ├── index.rst
 │   │   │   ├── basic/
+│   │   │   │   ├── index.rst
 │   │   │   │   ├── overview.rst
 │   │   │   │   ├── install.rst
 │   │   │   │   └── quick_start.rst
@@ -178,6 +180,7 @@ docs/source/zh/
 ```text
 index.rst
 basic/
+    index.rst
     overview.rst
     install.rst
     quick_start.rst
@@ -211,6 +214,24 @@ faq/
 3. FAQ
 
 第一阶段中，Python API 页面仅作为占位页存在。
+
+站点根 landing page 可作为中英文总入口，但不应把 `en` 和 `zh` 目录本身作为 sidebar 一级导航项暴露给用户。实际可见导航应由当前语言页的目录树驱动。
+
+任意英文或中文页面都应只渲染当前语言的 sidebar 导航树。语言切换应以内嵌页内入口呈现，并优先跳转到结构对齐的对应页面；若某个自动生成的 API 详情页不存在中文对应页面，则中文入口应回退到中文 API 包装页或对应英文 API 入口页。
+
+`C/C++ API` 在 sidebar 中只应展开到 API group 页面，例如 `system`、`context`、`control`；函数详情页仍然存在，但不作为可见导航树的一部分。
+
+## 语言切换与导航渲染
+
+建议采用单一 Sphinx 工程中的平行语言目录，并通过页面上下文和模板覆盖控制导航展示，而不是把两棵语言树同时挂在根 sidebar 下。
+
+推荐策略如下：
+
+1. 根 `index.rst` 作为站点 landing page，仅提供品牌入口和跳转，不承担双语 sidebar 根的职责。
+2. `docs/source/en/index.rst` 与 `docs/source/zh/index.rst` 分别作为英文和中文的实际导航根。
+3. `conf.py` 根据当前 `docname` 计算当前语言、对应语言页面，以及 sidebar 应使用的语言根文档。
+4. 通过 `_templates` 覆盖 `sphinx_rtd_theme` 的布局或 sidebar 局部模板，使页面只渲染当前语言树，并在页内输出轻量语言切换入口。
+5. 对自动生成的 API 详情页保留英文原文；中文侧通过包装页提供说明和跳转，而不复制 API 符号内容。
 
 ## C/C++ API 生成
 
@@ -260,6 +281,8 @@ C/C++ API
 可见入口只列出函数。
 
 结构体、枚举、typedef、宏以及文件页不应出现在一级导航中。但它们仍可作为链接目标存在，以便用户从函数签名、参数说明和 `@ref` 引用跳转到相关定义。
+
+面向用户的 sidebar 中，`C/C++ API` 的展开深度控制在 group 页面层级。group 页面负责列出函数入口，Exhale/Breathe 生成的函数详情页只作为内容页和跳转目标存在。
 
 ## API 分类
 
@@ -370,7 +393,7 @@ to:   axcl_docs_design/include/external/
 
 1. 确认最终 Read the Docs 项目 slug。它可能会将 `axcl_docs_design` 规范化为 `axcl-docs-design`。
 2. 在 API 渲染 PoC 完成后，确认第一阶段是否必须实现 `gen_api_index.py`。
-3. 确认中英文是作为一个 Sphinx 工程中的平行目录管理，还是后续接入 Read the Docs localization。
+3. 如需更接近 ESP-IDF 的体验，确认语言切换入口放在正文标题区还是页面工具栏区；两者都可由模板覆盖实现。
 
 ## 验证方式
 
@@ -382,3 +405,6 @@ to:   axcl_docs_design/include/external/
 4. 结构体、枚举、typedef、宏以及文件页不会作为一级导航入口出现。
 5. Read the Docs 能成功构建 `latest`。
 6. Read the Docs 能成功构建并展示诸如 `v1.0.0` 的发布 tag。
+7. 任意英文或中文内容页只显示当前语言的 sidebar 导航树。
+8. 页面内存在语言切换入口，并能优先跳转到对应语言的对齐页面。
+9. `C/C++ API` 在 sidebar 中只展开到 API group 页面，而不是函数详情页。
