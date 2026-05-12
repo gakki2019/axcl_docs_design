@@ -1,0 +1,52 @@
+1. 文档架构：sphnix + breathe + exhale 渲染成html
+2. axcl sdk的api注释采用doxgen，头文件导出目录：axcl/include/external
+3. docs目录组织建议(这个目录没有考虑到中英文，需要考虑)
+   index.rst
+   basic
+      |-- overview.rst
+      |-- install.rst
+      |-- quick_start.rst
+   dev
+      |-- arch
+          |-- index.rst
+          |-- system.rst
+          |-- device.rst
+          |-- ...
+      |-- c
+          |-- index.rst
+          |-- runtime.rst
+          |-- native.rst
+          |-- ...
+      |-- python
+          |-- index.rst
+          |-- ...
+      |-- index.rst
+    faq
+      |-- index.rst
+      |-- ...
+
+4. sphnix渲染的目录
+   BASIC                          # .. toctree
+      |-- Overview                # basic/overview.rst，对AXCL整体概要介绍
+      |-- Install Guide           # basic/install.rst， 如何安装和卸载
+      |-- Quick Start             # basic/quick_start.rst 快速上手
+    DEVELOPMENT
+      |-- Architecture            # .. toctree
+          |-- System              # 详细描述系统架构，arch/system.rst
+          |-- Device              # 设备管理子章节, arch/device.rst
+          |-- ...                 # 模块子章节, arch/...
+      |-- C&C++ API               # .. toctree  API由doxgen + breathe + ... 框架实现
+          |-- Runtime
+          |-- Native
+      |-- Python API
+    FAQ
+5. SDK会有多个版本，文档也需要区分，用户可以在sphnix的html选择相应的版本
+6. 支持中英文切换， 但是API没有中文。
+7. rst和mardown的资源文件(比如svg)的存
+
+参考示例：
+页面风格和中英文文档组织参考 https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html
+该示例的源码：https://github.com/espressif/esp-idf/tree/master/docs
+注意：
+1. 没有Supported Targets，但文档版本选择是需要的
+2. 不需要chatbox
