@@ -27,8 +27,8 @@ extern "C" {
  * Dump file prefix is automatically detected from module name.
  */
 typedef struct {
-    const char* dump_dir;   // Dump file output directory
-    const char* dump_type;  // Dump type/level (e.g., "Normal", "FullMemory")
+    const char* dump_dir;   /**< Dump file output directory. */
+    const char* dump_type;  /**< Dump type or level such as "Normal" or "FullMemory". */
 } axclCrashDumpConfig;
 
 /**

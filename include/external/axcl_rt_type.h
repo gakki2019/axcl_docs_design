@@ -19,15 +19,40 @@
 extern "C" {
 #endif
 
+/**
+ * @ingroup contextApi
+ * @brief Runtime context handle.
+ */
 typedef void   *axclrtContext;
+/**
+ * @ingroup streamApi
+ * @brief Runtime stream handle.
+ */
 typedef void   *axclrtStream;
+/**
+ * @ingroup eventApi
+ * @brief Runtime event handle.
+ */
 typedef void   *axclrtEvent;
 
+/**
+ * @ingroup contextApi
+ * @brief Invalid runtime context handle.
+ */
 #define INVALID_AXCL_CONTEXT    ((axclrtContext)0)
+/**
+ * @ingroup streamApi
+ * @brief Invalid runtime stream handle.
+ */
 #define INVALID_AXCL_STREAM     ((axclrtStream )0)
+/**
+ * @ingroup eventApi
+ * @brief Invalid runtime event handle.
+ */
 #define INVALID_AXCL_EVENT      ((axclrtEvent  )0)
 
 /**
+ * @ingroup memApi
  * @brief Mem malloc policy enum.
  */
 typedef enum axclrtMemMallocPolicy {
@@ -38,6 +63,7 @@ typedef enum axclrtMemMallocPolicy {
 } axclrtMemMallocPolicy;
 
 /**
+ * @ingroup memApi
  * @brief Memcpy kind enum.
  */
 typedef enum axclrtMemcpyKind {
@@ -50,6 +76,7 @@ typedef enum axclrtMemcpyKind {
 } axclrtMemcpyKind;
 
 /**
+ * @ingroup controlApi
  * @brief File transfer policy enum.
  */
 typedef enum axclrtFileTransferPolicy {

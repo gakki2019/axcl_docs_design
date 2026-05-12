@@ -18,9 +18,17 @@
 extern "C" {
 #endif
 
+/**
+ * @defgroup errorApi error
+ */
+
 /****************************************************************************************************
  * comm error
 ****************************************************************************************************/
+/**
+ * @ingroup errorApi
+ * @brief Compose a common-module error code.
+ */
 #define AXCL_DEF_COMM_ERR(errid)                AXCL_DEF_ERR(AXCL_COMM, (errid))
                                                                                                         /*           HOST           |         DEVICE         */
 /* generic: 0x00 ~ 0x1F */
@@ -48,6 +56,10 @@ extern "C" {
 /****************************************************************************************************
  * protocol error
 ****************************************************************************************************/
+/**
+ * @ingroup errorApi
+ * @brief Compose a protocol-module error code.
+ */
 #define AXCL_DEF_PROTOCOL_ERR(errid)            AXCL_DEF_ERR(AXCL_PROTOCOL, (errid))
                                                                                                         /*           HOST           |         DEVICE         */
 #define AXCL_ERR_PROTOCOL_NULL_POINTER          AXCL_DEF_PROTOCOL_ERR(AXCL_ERR_NULL_POINTER)            /* -2144317182, 0x80305102;  -2144251646, 0x80315102 */
@@ -59,6 +71,10 @@ extern "C" {
 /****************************************************************************************************
  * runtime error
 ****************************************************************************************************/
+/**
+ * @ingroup errorApi
+ * @brief Compose a runtime-module error code.
+ */
 #define AXCL_DEF_RT_ERR(errid)                  AXCL_DEF_ERR(AXCL_RUNTIME, (errid))
                                                                                                         /*           HOST           |         DEVICE         */
 #define AXCL_ERR_RT_NULL_POINTER                AXCL_DEF_RT_ERR(AXCL_ERR_NULL_POINTER)                  /* -2144316926, 0x80305202;  -2144251390, 0x80315202 */
@@ -91,17 +107,49 @@ extern "C" {
 /****************************************************************************************************
  * native error
 ****************************************************************************************************/
+/**
+ * @ingroup errorApi
+ * @brief Compose a native-module error code.
+ */
 #define AXCL_DEF_NATIVE_ERR(errid)              AXCL_DEF_ERR(AXCL_NATIVE, (errid))
+/**
+ * @ingroup errorApi
+ * @brief Compose a system-module error code.
+ */
 #define AXCL_DEF_SYS_ERR(errid)                 AXCL_DEF_ERR(AXCL_SYS, (errid))
+/**
+ * @ingroup errorApi
+ * @brief Compose a video-decode-module error code.
+ */
 #define AXCL_DEF_VDEC_ERR(errid)                AXCL_DEF_ERR(AXCL_VDEC, (errid))
+/**
+ * @ingroup errorApi
+ * @brief Compose a video-encode-module error code.
+ */
 #define AXCL_DEF_VENC_ERR(errid)                AXCL_DEF_ERR(AXCL_VENC, (errid))
+/**
+ * @ingroup errorApi
+ * @brief Compose an IVPS-module error code.
+ */
 #define AXCL_DEF_IVPS_ERR(errid)                AXCL_DEF_ERR(AXCL_IVPS, (errid))
+/**
+ * @ingroup errorApi
+ * @brief Compose an IVE-module error code.
+ */
 #define AXCL_DEF_IVE_ERR(errid)                 AXCL_DEF_ERR(AXCL_IVE, (errid))
+/**
+ * @ingroup errorApi
+ * @brief Compose an engine-module error code.
+ */
 #define AXCL_DEF_ENGINE_ERR(errid)              AXCL_DEF_ERR(AXCL_ENGINE, (errid))
 
 /****************************************************************************************************
  * daemon error
  ****************************************************************************************************/
+/**
+ * @ingroup errorApi
+ * @brief Compose a daemon-module error code.
+ */
 #define AXCL_DEF_DAEMON_ERR(errid)              AXCL_DEF_ERR(AXCL_DAEMON, (errid))
 /* generic: 0x00 ~ 0x1F */
 #define AXCL_ERR_DAEMON_NULL_POINTER            AXCL_DEF_DAEMON_ERR(AXCL_ERR_NULL_POINTER)              /* 0x80315502 */

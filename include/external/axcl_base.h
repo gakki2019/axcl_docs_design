@@ -19,6 +19,10 @@
 extern "C" {
 #endif
 
+/**
+ * @defgroup baseApi base
+ */
+
 #if defined(__GNUC__) || defined(__clang__)
     #define AXCL_EXPORT __attribute((visibility("default")))
 #elif defined(_WIN32)
@@ -32,6 +36,10 @@ extern "C" {
     #pragma message("AXCL_EXPORT is not defined")
 #endif
 
+/**
+ * @ingroup baseApi
+ * @brief Timeout value used to wait indefinitely.
+ */
 #define NO_TIMEOUT (-1)
 
 #ifndef AXCL_BUILD_FOR_DEVICE
@@ -60,8 +68,16 @@ extern "C" {
 #define AXCL_IVE                (0x15)
 #define AXCL_ENGINE             (0x1D)
 
+/**
+ * @ingroup baseApi
+ * @brief Public AXCL error code type.
+ */
 typedef int32_t axclError;
 
+/**
+ * @ingroup baseApi
+ * @brief Common AXCL status and generic error identifiers.
+ */
 typedef enum {
     AXCL_SUCC                   = 0x00,
     AXCL_FAIL                   = 0x01,
@@ -86,6 +102,10 @@ typedef enum {
 * |------------------------------------------------------------------------|
 * |1|<--- 7bits  --->|<---- 8bits ---->|<---- 8bits ---->|<---- 8bits ---->|
 */
+/**
+ * @ingroup baseApi
+ * @brief Compose a module-specific AXCL error code.
+ */
 #define AXCL_DEF_ERR(sub, errid) \
     ((axclError)((0x80000000L) | ((AX_ID_AXCL) << 16 ) | ((sub) << 8) | (errid)))
 
