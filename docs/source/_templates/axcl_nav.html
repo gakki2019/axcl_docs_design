@@ -2,9 +2,10 @@
 <ul>
     {%- for item in items %}
     <li class="toctree-l{{ level }}{% if item.active %} current{% endif %}{% if item.expanded %} axcl-nav-open{% endif %}"
-        {% if item.children %} aria-expanded="{{ 'true' if item.expanded else 'false' }}" {% endif %}>
+        data-nav-id="{{ item.docname }}" {% if item.children %}
+        aria-expanded="{{ 'true' if item.expanded else 'false' }}" {% endif %}>
         <a class="reference internal{% if item.current %} current{% endif %}"
-            href="{{ (item.docname.rsplit('/', 1)[-1] ~ '.html') if item.current else pathto(item.docname) }}">{{
+            href="{{ ((('#' ~ item.get('href_anchor')) if item.get('href_docname') == pagename else (pathto(item.get('href_docname')) ~ '#' ~ item.get('href_anchor'))) if item.get('href_docname') else ((item.docname.rsplit('/', 1)[-1] ~ '.html') if item.current else pathto(item.docname))) }}">{{
             item.title }}</a>
         {%- if item.children %}
         {{ render_items(item.children, level + 1) }}

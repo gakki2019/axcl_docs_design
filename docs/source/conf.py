@@ -162,6 +162,7 @@ html_static_path = ["_static"]
 html_theme = "sphinx_rtd_theme"
 html_logo = "_static/img/axcl-logo.svg"
 html_css_files = ["css/custom.css"]
+html_js_files = ["js/nav_toggle.js"]
 html_theme_options = {
     "collapse_navigation": False,
     "sticky_navigation": True,
@@ -242,12 +243,35 @@ def normalize_docname_for_nav(docname: str) -> str:
     return docname
 
 
+def build_api_nav_items(language: str) -> list[dict[str, Any]]:
+    api_children: list[dict[str, Any]] = []
+
+    for item in API_GROUP_ITEMS:
+        localized_docname = item["docname"]
+        nav_item: dict[str, Any] = {
+            "title": item["title"],
+            "docname": localized_docname,
+            "children": [],
+        }
+
+        if language == "zh":
+            localized_docname = localized_docname.replace("en/", "zh/", 1)
+            nav_item["docname"] = localized_docname
+
+            if localized_docname not in SOURCE_DOCNAMES:
+                anchor = re.sub(r"[^a-z0-9]+", "-", item["title"].lower()).strip("-") or "api-group"
+                nav_item["href_docname"] = "zh/dev/c/index"
+                nav_item["href_anchor"] = anchor
+
+        api_children.append(nav_item)
+
+    return api_children
+
+
 def build_nav_tree(language: str) -> list[dict[str, Any]]:
     titles = NAV_TITLES[language]
-    api_children = [dict(item, children=[]) for item in API_GROUP_ITEMS]
+    api_children = build_api_nav_items(language)
     c_api_docname = f"{language}/dev/c/index"
-    if language == "zh":
-        api_children = [dict(item, children=[]) for item in API_GROUP_ITEMS]
 
     return [
         {
@@ -291,11 +315,23 @@ def annotate_nav_tree(
                 "children": children,
                 "current": is_current,
                 "active": is_active,
-                "expanded": False,
+                "expanded": is_active,
             }
         )
         subtree_active = subtree_active or is_active
     return annotated_items, subtree_active
+
+
+def expand_first_level_nav(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    expanded_items: list[dict[str, Any]] = []
+    for item in items:
+        expanded_items.append(
+            {
+                **item,
+                "expanded": bool(item["children"]),
+            }
+        )
+    return expanded_items
 
 
 def resolve_counterpart_docname(docname: str) -> str | None:
@@ -352,6 +388,8 @@ def add_axcl_page_context(app, pagename: str, templatename: str, context, doctre
 
     normalized_docname = normalize_docname_for_nav(pagename)
     nav_sections, _ = annotate_nav_tree(build_nav_tree(language), normalized_docname)
+    if pagename == "zh/index":
+        nav_sections = expand_first_level_nav(nav_sections)
     context["axcl_nav_sections"] = nav_sections
 
 

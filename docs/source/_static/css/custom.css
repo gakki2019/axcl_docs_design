@@ -8,126 +8,323 @@
     --axcl-surface-alt: #f4f8fb;
     --axcl-border: rgba(19, 34, 56, 0.12);
     --axcl-shadow: 0 18px 40px rgba(11, 46, 77, 0.12);
+    --axcl-nav-bg: #343131;
+    --axcl-nav-panel: #e3e3e3;
+    --axcl-nav-current: #fcfcfc;
+    --axcl-nav-text: #d9d9d9;
+    --axcl-nav-muted: #9b9b9b;
+    --axcl-nav-active: #404040;
+    --axcl-nav-hover: #ffffff;
+    --axcl-nav-toggle-size: 16px;
+    --axcl-nav-toggle-gap: 6px;
 }
 
-.wy-side-nav-search,
+.wy-nav-side {
+    width: 320px;
+    background: var(--axcl-nav-bg);
+}
+
+html.axcl-nav-transitioning .wy-nav-content-wrap {
+    opacity: 0.96;
+}
+
+html.axcl-nav-ready .wy-nav-content-wrap {
+    opacity: 1;
+    transition: opacity 80ms ease;
+}
+
+html.axcl-nav-transitioning .wy-nav-content-wrap,
+html.axcl-nav-ready .wy-nav-content-wrap {
+    will-change: opacity;
+}
+
+.wy-side-scroll {
+    width: 320px;
+}
+
+.wy-nav-content-wrap {
+    margin-left: 320px;
+}
+
+.wy-side-nav-search {
+    background: var(--axcl-nav-panel);
+    color: #333333;
+    padding: 12px;
+}
+
 .wy-nav-top {
-    background: linear-gradient(135deg, #0a2942 0%, #0b7fc2 55%, #2ec5d3 100%);
+    background: var(--axcl-nav-bg);
 }
 
 .wy-side-nav-search>a,
+.wy-side-nav-search .wy-dropdown>a,
 .wy-nav-top a {
     font-weight: 700;
     letter-spacing: 0.02em;
 }
 
+.wy-side-nav-search>a,
+.wy-side-nav-search .wy-dropdown>a {
+    color: #333333;
+    margin: 0 0 12px;
+    padding: 4px 6px;
+}
+
 .wy-side-nav-search .wy-dropdown>a img.logo,
 .wy-side-nav-search>a img.logo {
-    max-width: 210px;
+    max-width: 240px;
+    margin-top: 14px;
+    padding: 5px;
+}
+
+.wy-side-nav-search input[type=text],
+.wy-side-nav-search input[type=search] {
+    border: 1px solid #333333;
+    border-radius: 0;
+    background: #ffffff;
+    color: #000000;
+    font-size: 12.8px;
+    padding: 6px 12px;
 }
 
 .wy-menu-vertical a,
 .wy-menu-vertical a:visited {
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--axcl-nav-text);
+    font-size: 90%;
+    font-weight: 400;
+    line-height: 18px;
+    padding: 0.4045em 1.618em;
+    display: block;
+    position: relative;
 }
 
 .wy-menu-vertical li.toctree-l1>a,
 .wy-menu-vertical li.toctree-l2>a,
 .wy-menu-vertical li.toctree-l3>a,
 .wy-menu-vertical li.toctree-l4>a {
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--axcl-nav-text);
+    background: transparent;
+    padding-top: 0.4045em;
+    padding-bottom: 0.4045em;
+}
+
+.wy-menu-vertical li.toctree-l1>a {
+    padding-left: calc(1.618em + var(--axcl-nav-toggle-size) + var(--axcl-nav-toggle-gap));
+}
+
+.wy-menu-vertical li.toctree-l2>a,
+.wy-menu-vertical li.current li.toctree-l2>a {
+    padding-left: calc(2.427em + var(--axcl-nav-toggle-size) + var(--axcl-nav-toggle-gap));
+}
+
+.wy-menu-vertical li.toctree-l3>a,
+.wy-menu-vertical li.current li.toctree-l3>a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a {
+    padding-left: calc(4.045em + var(--axcl-nav-toggle-size) + var(--axcl-nav-toggle-gap)) !important;
+}
+
+.wy-menu-vertical li.toctree-l4>a,
+.wy-menu-vertical li.current li.toctree-l4>a,
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a {
+    padding-left: calc(5.663em + var(--axcl-nav-toggle-size) + var(--axcl-nav-toggle-gap)) !important;
 }
 
 .wy-menu-vertical li.current>a,
 .wy-menu-vertical li.current>a button.toctree-expand,
 .wy-menu-vertical a:hover,
 .wy-menu-vertical a:focus {
-    color: #ffffff;
+    color: var(--axcl-nav-hover);
+}
+
+.wy-menu-vertical a:hover,
+.wy-menu-vertical a:focus {
+    background-color: rgba(202, 42, 42, 0.24);
+}
+
+.wy-nav-side .wy-menu-vertical li>a.reference.internal:hover,
+.wy-nav-side .wy-menu-vertical li>a.reference.internal:focus {
+    background-color: rgba(202, 42, 42, 0.24) !important;
+    color: var(--axcl-nav-hover) !important;
+}
+
+.wy-nav-side .wy-menu-vertical li>a.reference.internal:hover button.toctree-expand:before,
+.wy-nav-side .wy-menu-vertical li>a.reference.internal:focus button.toctree-expand:before {
+    color: var(--axcl-nav-hover);
 }
 
 .wy-menu-vertical li.current>a,
-.wy-menu-vertical a:hover,
-.wy-menu-vertical a:focus {
-    background: rgba(202, 42, 42, 0.22);
+.wy-menu-vertical li.current {
+    background: var(--axcl-nav-panel);
 }
 
 .wy-menu-vertical li.current>a {
-    border-left: 3px solid #ca2a2a;
+    background: var(--axcl-nav-current) !important;
+    color: var(--axcl-nav-active) !important;
+    border-left: 0;
+    font-weight: 700;
+}
+
+.wy-menu-vertical li.current>a:hover,
+.wy-menu-vertical li.current>a:focus {
+    background: var(--axcl-nav-current) !important;
+    color: #8f1d1d !important;
+}
+
+.wy-nav-side .wy-menu-vertical li.current>a.reference.internal:hover,
+.wy-nav-side .wy-menu-vertical li.current>a.reference.internal:focus,
+.wy-nav-side .wy-menu-vertical li.current>a.reference.internal.current:hover,
+.wy-nav-side .wy-menu-vertical li.current>a.reference.internal.current:focus {
+    background: var(--axcl-nav-current) !important;
+    color: #8f1d1d !important;
 }
 
 .wy-menu-vertical li.current>a button.toctree-expand:before {
-    color: #ffffff;
+    color: var(--axcl-nav-active);
+}
+
+.wy-menu-vertical li.current>a:hover button.toctree-expand:before,
+.wy-menu-vertical li.current>a:focus button.toctree-expand:before {
+    color: #8f1d1d;
+}
+
+.wy-nav-side .wy-menu-vertical li.current>a.reference.internal:hover button.toctree-expand:before,
+.wy-nav-side .wy-menu-vertical li.current>a.reference.internal:focus button.toctree-expand:before,
+.wy-nav-side .wy-menu-vertical li.current>a.reference.internal.current:hover button.toctree-expand:before,
+.wy-nav-side .wy-menu-vertical li.current>a.reference.internal.current:focus button.toctree-expand:before {
+    color: #8f1d1d;
+}
+
+.wy-menu-vertical li.current>ul,
+.wy-menu-vertical li.current li.current {
+    background: var(--axcl-nav-panel);
+}
+
+.wy-menu-vertical li.current li.current>a {
+    background: var(--axcl-nav-current) !important;
+    color: var(--axcl-nav-active) !important;
+}
+
+.wy-menu-vertical li.current ul a,
+.wy-menu-vertical li.current ul a:visited {
+    color: var(--axcl-nav-active);
+}
+
+.wy-menu-vertical li.current ul a:hover,
+.wy-menu-vertical li.current ul a:focus {
+    background: rgba(202, 42, 42, 0.18);
+    color: #7a1717;
 }
 
 .wy-menu-vertical li[aria-expanded="false"]>ul {
-    display: none;
+    display: none !important;
 }
 
 .wy-menu-vertical li[aria-expanded="true"]>ul,
 .wy-menu-vertical .axcl-nav-open>ul {
-    display: block;
+    display: block !important;
 }
 
 .wy-menu-vertical li>a button.toctree-expand {
-    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 1.15rem;
-    margin-right: 0.35rem;
-    color: rgba(255, 255, 255, 0.92);
+    width: var(--axcl-nav-toggle-size);
+    height: var(--axcl-nav-toggle-size);
+    margin: 0;
+    color: var(--axcl-nav-text);
+    border: 0;
+    background: transparent;
+    padding: 0;
+    transform: translateY(-50%);
+}
+
+.wy-menu-vertical li.toctree-l1>a button.toctree-expand {
+    left: 1.618em;
+}
+
+.wy-menu-vertical li.toctree-l2>a button.toctree-expand {
+    left: 2.427em;
+    color: #a3a3a3;
+}
+
+.wy-menu-vertical li.toctree-l3>a button.toctree-expand,
+.wy-menu-vertical li.toctree-l4>a button.toctree-expand {
+    color: #969696;
+}
+
+.wy-menu-vertical li.toctree-l3>a button.toctree-expand {
+    left: 4.045em;
+}
+
+.wy-menu-vertical li.toctree-l4>a button.toctree-expand {
+    left: 5.663em;
 }
 
 .wy-menu-vertical li>a button.toctree-expand:before,
 .wy-menu-vertical li.current>a button.toctree-expand:before,
 .wy-menu-vertical li.on>a button.toctree-expand:before {
-    content: "+";
-    font-family: inherit !important;
-    font-size: 1rem;
-    font-weight: 700;
+    content: "\f196";
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-family: FontAwesome;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
 }
 
 .wy-menu-vertical li[aria-expanded="true"]>a button.toctree-expand:before,
 .wy-menu-vertical li.current[aria-expanded="true"]>a button.toctree-expand:before {
-    content: "-";
+    content: "\f147";
 }
 
 .axcl-root-nav {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem 1rem 1.2rem;
+    gap: 0;
+    padding: 0 0 0.65rem;
 }
 
 .axcl-root-nav-title {
-    margin: 0 0 0.2rem;
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 0.78rem;
+    margin: 0;
+    padding: 12px 23.3px 6px;
+    color: var(--axcl-nav-muted);
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
 .axcl-root-nav a {
     display: block;
-    padding: 0.65rem 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 12px;
-    color: rgba(255, 255, 255, 0.94) !important;
+    padding: 5.825px 23.3px;
+    border: 0;
+    border-radius: 0;
+    color: var(--axcl-nav-text) !important;
     text-decoration: none !important;
-    background: rgba(255, 255, 255, 0.07);
-    font-weight: 700;
+    background: transparent;
+    font-weight: 400;
 }
 
 .axcl-root-nav a:hover,
 .axcl-root-nav a:focus {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.24);
+    background: transparent;
+    color: var(--axcl-nav-hover) !important;
 }
 
 .wy-menu-vertical li.toctree-l1.current>a,
 .wy-menu-vertical li.toctree-l2.current>a,
 .wy-menu-vertical li.toctree-l3.current>a {
     font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+    .wy-nav-content-wrap {
+        margin-left: 0;
+    }
 }
 
 .wy-nav-content {

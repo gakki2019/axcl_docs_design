@@ -21,6 +21,21 @@
 {% include "searchbox.html" %}
 {% endblock %}
 
+{% block extrahead %}
+{{ super() }}
+<script>
+    (function () {
+        try {
+            if (window.sessionStorage.getItem("axcl-nav-pending-transition") === "1") {
+                document.documentElement.classList.add("axcl-nav-transitioning");
+                window.sessionStorage.removeItem("axcl-nav-pending-transition");
+            }
+        } catch (error) {
+        }
+    })();
+</script>
+{% endblock %}
+
 {% block menu %}
 {% if axcl_nav_sections %}
 {% include "axcl_nav.html" %}
