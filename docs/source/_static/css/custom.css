@@ -65,8 +65,7 @@ html.axcl-nav-ready .wy-nav-content-wrap {
     margin: 0 0 6px;
 }
 
-.wy-side-nav-search>div.switch-menus>div.language-switch select,
-.wy-side-nav-search>div.switch-menus>div.version-switch select {
+.wy-side-nav-search>div.switch-menus>div.language-switch select {
     width: 100%;
     max-width: 100%;
     min-height: 36px;
@@ -82,12 +81,28 @@ html.axcl-nav-ready .wy-nav-content-wrap {
     appearance: none;
 }
 
+.wy-side-nav-search>div.switch-menus>div.version-switch select {
+    width: 100%;
+    max-width: 100%;
+    min-height: 36px;
+    margin: 0;
+    padding: 6px 36px 6px 12px;
+    border: 1px solid #333333;
+    border-radius: 0;
+    background: #ffffff;
+    color: #000000;
+    font-size: 12.8px;
+    font-weight: 400;
+    box-shadow: none;
+    appearance: none;
+}
+
 .wy-side-nav-search>div.switch-menus>div.language-switch select:hover,
 .wy-side-nav-search>div.switch-menus>div.language-switch select:focus,
 .wy-side-nav-search>div.switch-menus>div.version-switch select:hover,
 .wy-side-nav-search>div.switch-menus>div.version-switch select:focus {
-    background: transparent;
-    border-color: transparent;
+    background: #ffffff;
+    border-color: #333333;
     color: #000000;
     outline: none;
 }
