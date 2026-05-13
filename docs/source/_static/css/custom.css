@@ -119,6 +119,12 @@ html.axcl-nav-ready .wy-nav-content-wrap {
     right: 8px;
 }
 
+.wy-side-nav-search>div.switch-menus>div.version-switch:has(> select):after {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+}
+
 .wy-nav-top {
     background: var(--axcl-nav-bg);
 }
