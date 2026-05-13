@@ -72,9 +72,9 @@ html.axcl-nav-ready .wy-nav-content-wrap {
     min-height: 36px;
     margin: 0;
     padding: 6px 36px 6px 12px;
-    border: 1px solid #333333;
+    border: 1px solid transparent;
     border-radius: 0;
-    background: #ffffff;
+    background: transparent;
     color: #000000;
     font-size: 13px;
     font-weight: 400;
@@ -86,8 +86,8 @@ html.axcl-nav-ready .wy-nav-content-wrap {
 .wy-side-nav-search>div.switch-menus>div.language-switch select:focus,
 .wy-side-nav-search>div.switch-menus>div.version-switch select:hover,
 .wy-side-nav-search>div.switch-menus>div.version-switch select:focus {
-    background: #ffffff;
-    border-color: #333333;
+    background: transparent;
+    border-color: transparent;
     color: #000000;
     outline: none;
 }
