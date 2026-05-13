@@ -65,6 +65,10 @@ html.axcl-nav-ready .wy-nav-content-wrap {
     margin: 0 0 6px;
 }
 
+.wy-side-nav-search>div.switch-menus>div.version-switch {
+    position: relative;
+}
+
 .wy-side-nav-search>div.switch-menus>div.language-switch select {
     width: 100%;
     max-width: 100%;
@@ -120,9 +124,12 @@ html.axcl-nav-ready .wy-nav-content-wrap {
 }
 
 .wy-side-nav-search>div.switch-menus>div.version-switch:has(> select):after {
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 12px;
+    pointer-events: none;
+    line-height: 1;
 }
 
 .wy-nav-top {
