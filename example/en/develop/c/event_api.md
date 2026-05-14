@@ -16,7 +16,6 @@
 
 ## API
 
-
 <br>
 
 <a id="axclrtCreateEvent"></a>
@@ -41,7 +40,6 @@ AXCL_EXPORT axclError axclrtCreateEvent(axclrtEvent *event);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -68,7 +66,6 @@ AXCL_EXPORT axclError axclrtDestroyEvent(axclrtEvent event);
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtRecordEvent"></a>
@@ -94,7 +91,6 @@ AXCL_EXPORT axclError axclrtRecordEvent(axclrtEvent event, axclrtStream stream);
 
 N/A
 
-
 <br>
 
 <a id="axclrtStreamWaitEvent"></a>
@@ -119,7 +115,6 @@ AXCL_EXPORT axclError axclrtStreamWaitEvent(axclrtStream stream, axclrtEvent eve
 #### Returns
 
 N/A
-
 
 <br>
 
@@ -147,7 +142,6 @@ AXCL_EXPORT axclError axclrtStreamWaitEventWithTimeout(axclrtStream stream, axcl
 
 N/A
 
-
 <br>
 
 <a id="axclrtSynchronizeEvent"></a>
@@ -172,7 +166,6 @@ AXCL_EXPORT axclError axclrtSynchronizeEvent(axclrtEvent event);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 

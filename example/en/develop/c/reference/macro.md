@@ -1,6 +1,5 @@
 # Macro Reference
 
-
 <br>
 
 <a id="AXCLRT_ENGINE_MAX_DIM_CNT"></a>
@@ -9,14 +8,11 @@
 
 Maximum number of dimensions supported by an engine tensor.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCLRT_ENGINE_MAX_DIM_CNT 32
 ```
-
 
 <br>
 
@@ -24,16 +20,11 @@ Maximum number of dimensions supported by an engine tensor.
 
 ## AXCL_COMM
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_COMM (0x50)
 ```
-
 
 <br>
 
@@ -41,16 +32,11 @@ Maximum number of dimensions supported by an engine tensor.
 
 ## AXCL_CTRL
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_CTRL (0x57)
 ```
-
 
 <br>
 
@@ -58,16 +44,11 @@ Maximum number of dimensions supported by an engine tensor.
 
 ## AXCL_DAEMON
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DAEMON (0x55)
 ```
-
 
 <br>
 
@@ -77,14 +58,11 @@ Maximum number of dimensions supported by an engine tensor.
 
 Compose a common-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_COMM_ERR AXCL_DEF_ERR(AXCL_COMM, (errid))
 ```
-
 
 <br>
 
@@ -92,16 +70,11 @@ Compose a common-module error code.
 
 ## AXCL_DEF_CTRL_ERR
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_CTRL_ERR AXCL_DEF_ERR(AXCL_CTRL, (errid))
 ```
-
 
 <br>
 
@@ -111,14 +84,11 @@ Compose a common-module error code.
 
 Compose a daemon-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_DAEMON_ERR AXCL_DEF_ERR(AXCL_DAEMON, (errid))
 ```
-
 
 <br>
 
@@ -128,14 +98,11 @@ Compose a daemon-module error code.
 
 Compose an engine-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_ENGINE_ERR AXCL_DEF_ERR(AXCL_ENGINE, (errid))
 ```
-
 
 <br>
 
@@ -145,14 +112,11 @@ Compose an engine-module error code.
 
 Compose a module-specific AXCL error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_ERR ((axclError)((0x80000000L) | ((AX_ID_AXCL) << 16 ) | ((sub) << 8) | (errid)))
 ```
-
 
 <br>
 
@@ -162,14 +126,11 @@ Compose a module-specific AXCL error code.
 
 Compose an IVE-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_IVE_ERR AXCL_DEF_ERR(AXCL_IVE, (errid))
 ```
-
 
 <br>
 
@@ -179,14 +140,11 @@ Compose an IVE-module error code.
 
 Compose an IVPS-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_IVPS_ERR AXCL_DEF_ERR(AXCL_IVPS, (errid))
 ```
-
 
 <br>
 
@@ -196,14 +154,11 @@ Compose an IVPS-module error code.
 
 Compose a native-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_NATIVE_ERR AXCL_DEF_ERR(AXCL_NATIVE, (errid))
 ```
-
 
 <br>
 
@@ -213,14 +168,11 @@ Compose a native-module error code.
 
 Compose a protocol-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_PROTOCOL_ERR AXCL_DEF_ERR(AXCL_PROTOCOL, (errid))
 ```
-
 
 <br>
 
@@ -230,14 +182,11 @@ Compose a protocol-module error code.
 
 Compose a runtime-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_RT_ERR AXCL_DEF_ERR(AXCL_RUNTIME, (errid))
 ```
-
 
 <br>
 
@@ -247,14 +196,11 @@ Compose a runtime-module error code.
 
 Compose a system-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_SYS_ERR AXCL_DEF_ERR(AXCL_SYS, (errid))
 ```
-
 
 <br>
 
@@ -264,14 +210,11 @@ Compose a system-module error code.
 
 Compose a video-decode-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_VDEC_ERR AXCL_DEF_ERR(AXCL_VDEC, (errid))
 ```
-
 
 <br>
 
@@ -281,14 +224,11 @@ Compose a video-decode-module error code.
 
 Compose a video-encode-module error code.
 
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_VENC_ERR AXCL_DEF_ERR(AXCL_VENC, (errid))
 ```
-
 
 <br>
 
@@ -296,16 +236,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_DEF_WORKER_ERR
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_DEF_WORKER_ERR AXCL_DEF_ERR(AXCL_WORKER, (errid))
 ```
-
 
 <br>
 
@@ -313,16 +248,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_ENGINE
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_ENGINE (0x1D)
 ```
-
 
 <br>
 
@@ -330,16 +260,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_EXPORT
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_EXPORT
 ```
-
 
 <br>
 
@@ -347,16 +272,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_IVE
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_IVE (0x15)
 ```
-
 
 <br>
 
@@ -364,16 +284,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_IVPS
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_IVPS (0x0D)
 ```
-
 
 <br>
 
@@ -381,16 +296,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_LITE
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_LITE (0x53)
 ```
-
 
 <br>
 
@@ -398,16 +308,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_NATIVE
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_NATIVE (0x54)
 ```
-
 
 <br>
 
@@ -415,16 +320,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_PROTOCOL
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_PROTOCOL (0x51)
 ```
-
 
 <br>
 
@@ -432,16 +332,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_RUNTIME
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_RUNTIME (0x52)
 ```
-
 
 <br>
 
@@ -449,16 +344,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_SYS
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_SYS (0x0B)
 ```
-
 
 <br>
 
@@ -466,16 +356,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_VDEC
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_VDEC (0x08)
 ```
-
 
 <br>
 
@@ -483,16 +368,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_VENC
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_VENC (0x07)
 ```
-
 
 <br>
 
@@ -500,16 +380,11 @@ Compose a video-encode-module error code.
 
 ## AXCL_WORKER
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AXCL_WORKER (0x56)
 ```
-
 
 <br>
 
@@ -517,16 +392,11 @@ Compose a video-encode-module error code.
 
 ## AX_ID_AXCL
 
-
-
-<br>
-
 ### Definition
 
 ```c
 #define AX_ID_AXCL (0x30)
 ```
-
 
 <br>
 
@@ -536,14 +406,11 @@ Compose a video-encode-module error code.
 
 Invalid runtime context handle.
 
-<br>
-
 ### Definition
 
 ```c
 #define INVALID_AXCL_CONTEXT ((axclrtContext)0)
 ```
-
 
 <br>
 
@@ -553,14 +420,11 @@ Invalid runtime context handle.
 
 Invalid runtime event handle.
 
-<br>
-
 ### Definition
 
 ```c
 #define INVALID_AXCL_EVENT ((axclrtEvent )0)
 ```
-
 
 <br>
 
@@ -570,14 +434,11 @@ Invalid runtime event handle.
 
 Invalid runtime stream handle.
 
-<br>
-
 ### Definition
 
 ```c
 #define INVALID_AXCL_STREAM ((axclrtStream )0)
 ```
-
 
 <br>
 
@@ -586,8 +447,6 @@ Invalid runtime stream handle.
 ## NO_TIMEOUT
 
 Timeout value used to wait indefinitely.
-
-<br>
 
 ### Definition
 

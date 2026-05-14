@@ -13,7 +13,6 @@
 
 ## API
 
-
 <br>
 
 <a id="axclrtCreateContext"></a>
@@ -66,7 +65,6 @@ void working_thread(int device_id) {
 }
 ```
 
-
 <br>
 
 <a id="axclrtDestroyContext"></a>
@@ -100,7 +98,6 @@ AXCL_EXPORT axclError axclrtDestroyContext(axclrtContext context);
 
 [axclrtCreateContext](#axclrtCreateContext) | [axclrtSetDevice](device_api.md#axclrtSetDevice)
 
-
 <br>
 
 <a id="axclrtGetCurrentContext"></a>
@@ -125,7 +122,6 @@ AXCL_EXPORT axclError axclrtGetCurrentContext(axclrtContext *context);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 

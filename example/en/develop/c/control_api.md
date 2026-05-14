@@ -10,7 +10,6 @@
 
 ## API
 
-
 <br>
 
 <a id="axclrtControlExecuteShellCmd"></a>

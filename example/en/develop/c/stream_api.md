@@ -14,7 +14,6 @@
 
 ## API
 
-
 <br>
 
 <a id="axclrtCreateStream"></a>
@@ -39,7 +38,6 @@ AXCL_EXPORT axclError axclrtCreateStream(axclrtStream *stream);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -66,7 +64,6 @@ AXCL_EXPORT axclError axclrtDestroyStream(axclrtStream stream);
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtDestroyStreamForce"></a>
@@ -92,7 +89,6 @@ AXCL_EXPORT axclError axclrtDestroyStreamForce(axclrtStream stream);
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtSynchronizeStream"></a>
@@ -117,7 +113,6 @@ AXCL_EXPORT axclError axclrtSynchronizeStream(axclrtStream stream);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 

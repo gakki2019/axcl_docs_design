@@ -2,18 +2,18 @@
 
 <br>
 
-## Structures
-
-
-<br>
-
 <a id="axclCrashDumpConfig"></a>
 
 ## axclCrashDumpConfig
 
 Crash dump configuration structure.
 
-<br>
+```c
+typedef struct {
+    const char* dump_dir;   /**< Dump file output directory. */
+    const char* dump_type;  /**< Dump type or level such as "Normal" or "FullMemory". */
+} axclCrashDumpConfig;
+```
 
 ### Fields
 
@@ -21,7 +21,6 @@ Crash dump configuration structure.
 |---|---|---|
 | dump_dir | const char * | Dump file output directory. |
 | dump_type | const char * | Dump type or level such as "Normal" or "FullMemory". |
-
 
 <br>
 
@@ -31,7 +30,12 @@ Crash dump configuration structure.
 
 Tensor dimensions returned by engine shape query APIs.
 
-<br>
+```c
+typedef struct axclrtEngineIODims {
+    int32_t dimCount;                           /**< Number of valid dimensions in the shape. */
+    int32_t dims[AXCLRT_ENGINE_MAX_DIM_CNT];    /**< Dimension values in logical tensor order. */
+} axclrtEngineIODims;
+```
 
 ### Fields
 
@@ -39,7 +43,6 @@ Tensor dimensions returned by engine shape query APIs.
 |---|---|---|
 | dimCount | int32_t | Number of valid dimensions in the shape. |
 | dims | int32_t[AXCLRT_ENGINE_MAX_DIM_CNT] | Dimension values in logical tensor order. |
-
 
 <br>
 
@@ -49,7 +52,13 @@ Tensor dimensions returned by engine shape query APIs.
 
 Mock pipeline attributes.
 
-<br>
+```c
+typedef struct {
+  uint32_t mode;    /**< Mock running mode. */
+  uint32_t param_a; /**< Auxiliary parameter A. */
+  uint32_t param_b; /**< Auxiliary parameter B. */
+} mockAttr;
+```
 
 ### Fields
 
@@ -61,25 +70,15 @@ Mock pipeline attributes.
 
 <br>
 
-## Type Definitions
-
-
-<br>
-
 <a id="axclError"></a>
 
 ## axclError
 
 Public AXCL error code type.
 
-<br>
-
-### Definition
-
 ```c
 typedef int32_t axclError
 ```
-
 
 <br>
 
@@ -89,14 +88,9 @@ typedef int32_t axclError
 
 Runtime context handle.
 
-<br>
-
-### Definition
-
 ```c
 typedef void* axclrtContext
 ```
-
 
 <br>
 
@@ -106,14 +100,9 @@ typedef void* axclrtContext
 
 Opaque handle used to bind engine input and output buffers.
 
-<br>
-
-### Definition
-
 ```c
 typedef void* axclrtEngineIO
 ```
-
 
 <br>
 
@@ -123,14 +112,9 @@ typedef void* axclrtEngineIO
 
 Opaque handle used to query engine input and output metadata.
 
-<br>
-
-### Definition
-
 ```c
 typedef void* axclrtEngineIOInfo
 ```
-
 
 <br>
 
@@ -140,14 +124,9 @@ typedef void* axclrtEngineIOInfo
 
 Bitmask describing the engine core affinity set.
 
-<br>
-
-### Definition
-
 ```c
 typedef uint32_t axclrtEngineSet
 ```
-
 
 <br>
 
@@ -157,14 +136,9 @@ typedef uint32_t axclrtEngineSet
 
 Runtime event handle.
 
-<br>
-
-### Definition
-
 ```c
 typedef void* axclrtEvent
 ```
-
 
 <br>
 
@@ -174,14 +148,9 @@ typedef void* axclrtEvent
 
 Runtime stream handle.
 
-<br>
-
-### Definition
-
 ```c
 typedef void* axclrtStream
 ```
-
 
 <br>
 
@@ -191,14 +160,9 @@ typedef void* axclrtStream
 
 Callback invoked with a status code.
 
-<br>
-
-### Definition
-
 ```c
 typedef int32_t(* mockCallbackAEx_t) (int32_t statusCode)
 ```
-
 
 <br>
 
@@ -208,14 +172,9 @@ typedef int32_t(* mockCallbackAEx_t) (int32_t statusCode)
 
 Callback invoked with a status code and user context.
 
-<br>
-
-### Definition
-
 ```c
 typedef int32_t(* mockCallbackA_t) (int32_t statusCode, void *userData)
 ```
-
 
 <br>
 
@@ -225,14 +184,9 @@ typedef int32_t(* mockCallbackA_t) (int32_t statusCode, void *userData)
 
 Callback invoked for group and frame notifications without user data.
 
-<br>
-
-### Definition
-
 ```c
 typedef int32_t(* mockCallbackBEx_t) (uint32_t grp, uint32_t frameIndex)
 ```
-
 
 <br>
 
@@ -241,10 +195,6 @@ typedef int32_t(* mockCallbackBEx_t) (uint32_t grp, uint32_t frameIndex)
 ## mockCallbackB_t
 
 Callback invoked for group and frame notifications.
-
-<br>
-
-### Definition
 
 ```c
 typedef int32_t(* mockCallbackB_t) (uint32_t grp, uint32_t frameIndex, void *userData)

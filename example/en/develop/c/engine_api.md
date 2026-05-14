@@ -57,7 +57,6 @@
 
 ## API
 
-
 <br>
 
 <a id="axclrtEngineCreateContext"></a>
@@ -92,7 +91,6 @@ AXCL_EXPORT axclError axclrtEngineCreateContext(uint64_t modelId, uint64_t *cont
 
 RestrictionOne model id could create several running context, and each of them running only with its own settings and memory spaces.
 
-
 <br>
 
 <a id="axclrtEngineCreateIO"></a>
@@ -123,7 +121,6 @@ AXCL_EXPORT axclError axclrtEngineCreateIO(axclrtEngineIOInfo ioInfo, axclrtEngi
 
 RestrictionUsers should call axclrtEngineDestroyIO to release the axclrtEngineIO after using it.
 
-
 <br>
 
 <a id="axclrtEngineDestroyIO"></a>
@@ -149,7 +146,6 @@ AXCL_EXPORT axclError axclrtEngineDestroyIO(axclrtEngineIO io);
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtEngineDestroyIOInfo"></a>
@@ -174,7 +170,6 @@ AXCL_EXPORT axclError axclrtEngineDestroyIOInfo(axclrtEngineIOInfo ioInfo);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -203,7 +198,6 @@ AXCL_EXPORT axclError axclrtEngineExecute(uint64_t modelId, uint64_t contextId, 
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -238,7 +232,6 @@ AXCL_EXPORT axclError axclrtEngineExecuteAsync(uint64_t modelId, uint64_t contex
 
 axclLoadFromFile | axclLoadFromMem | axclLoadFromFileWithMem | axclLoadFromMemWithMem
 
-
 <br>
 
 <a id="axclrtEngineFinalize"></a>
@@ -265,7 +258,6 @@ N/A
 #### Restriction
 
 RestrictionUser needs to call axclrtEngineInit to initialize the runtime
-
 
 <br>
 
@@ -297,7 +289,6 @@ AXCL_EXPORT axclError axclrtEngineGetAffinity(uint64_t modelId, axclrtEngineSet 
 
 [axclrtEngineCreateContext](#axclrtEngineCreateContext) | [axclrtEngineSetAffinity](#axclrtEngineSetAffinity)
 
-
 <br>
 
 <a id="axclrtEngineGetContextAffinity"></a>
@@ -328,7 +319,6 @@ AXCL_EXPORT axclError axclrtEngineGetContextAffinity(uint64_t modelId, uint64_t 
 #### Remark
 
 [axclrtEngineCreateContext](#axclrtEngineCreateContext) | [axclrtEngineSetContextAffinity](#axclrtEngineSetContextAffinity)
-
 
 <br>
 
@@ -364,7 +354,6 @@ AXCL_EXPORT axclError axclrtEngineGetIOInfo(uint64_t modelId, axclrtEngineIOInfo
 
 RestrictionUsers should call axclrtEngineDestroyIOInfo to release the axclrtEngineIOInfo after using it.
 
-
 <br>
 
 <a id="axclrtEngineGetInputBufferByIndex"></a>
@@ -396,7 +385,6 @@ AXCL_EXPORT axclError axclrtEngineGetInputBufferByIndex(axclrtEngineIO io, uint3
 #### Restriction
 
 RestrictionThe data buffer is Device memory, and requires user application and release.
-
 
 <br>
 
@@ -430,7 +418,6 @@ AXCL_EXPORT axclError axclrtEngineGetInputBufferByName(axclrtEngineIO io, const 
 
 RestrictionThe data buffer is Device memory, and requires user application and release.
 
-
 <br>
 
 <a id="axclrtEngineGetInputDataLayout"></a>
@@ -462,7 +449,6 @@ AXCL_EXPORT axclError axclrtEngineGetInputDataLayout(axclrtEngineIOInfo ioInfo, 
 
 [axclrtEngineGetIOInfo](#axclrtEngineGetIOInfo) | axclrtEngineGetIOInfoByIndex | [axclrtEngineGetNumInputs](#axclrtEngineGetNumInputs)
 
-
 <br>
 
 <a id="axclrtEngineGetInputDataType"></a>
@@ -493,7 +479,6 @@ AXCL_EXPORT axclError axclrtEngineGetInputDataType(axclrtEngineIOInfo ioInfo, ui
 #### Remark
 
 [axclrtEngineGetIOInfo](#axclrtEngineGetIOInfo) | axclrtEngineGetIOInfoByIndex | [axclrtEngineGetNumInputs](#axclrtEngineGetNumInputs)
-
 
 <br>
 
@@ -531,7 +516,6 @@ AXCL_EXPORT axclError axclrtEngineGetInputDims(axclrtEngineIOInfo ioInfo, uint32
 
 RestrictionUsers should release the [axclrtEngineIODims](reference/struct.md#axclrtEngineIODims) after using it.
 
-
 <br>
 
 <a id="axclrtEngineGetInputIndexByName"></a>
@@ -557,7 +541,6 @@ AXCL_EXPORT int32_t axclrtEngineGetInputIndexByName(axclrtEngineIOInfo ioInfo, c
 
 - `input`: tensor index
 - `-1`: if not found
-
 
 <br>
 
@@ -589,7 +572,6 @@ AXCL_EXPORT const char* axclrtEngineGetInputNameByIndex(axclrtEngineIOInfo ioInf
 
 [axclrtEngineGetIOInfo](#axclrtEngineGetIOInfo) | axclrtEngineGetIOInfoByIndex | [axclrtEngineGetNumInputs](#axclrtEngineGetNumInputs)
 
-
 <br>
 
 <a id="axclrtEngineGetInputSizeByIndex"></a>
@@ -616,7 +598,6 @@ AXCL_EXPORT uint64_t axclrtEngineGetInputSizeByIndex(axclrtEngineIOInfo ioInfo, 
 
 - `Specify`: the size of the input
 
-
 <br>
 
 <a id="axclrtEngineGetModelCompilerVersion"></a>
@@ -641,7 +622,6 @@ AXCL_EXPORT const char* axclrtEngineGetModelCompilerVersion(uint64_t modelId);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -668,7 +648,6 @@ AXCL_EXPORT axclError axclrtEngineGetModelType(const char *modelPath, axclrtEngi
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -701,7 +680,6 @@ AXCL_EXPORT axclError axclrtEngineGetModelTypeFromMem(const void *model, uint64_
 
 RestrictionThe model memory is Device memory, and requires user application and release.
 
-
 <br>
 
 <a id="axclrtEngineGetModelTypeFromModelId"></a>
@@ -728,7 +706,6 @@ AXCL_EXPORT axclError axclrtEngineGetModelTypeFromModelId(uint64_t modelId, axcl
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtEngineGetNumInputs"></a>
@@ -753,7 +730,6 @@ AXCL_EXPORT uint32_t axclrtEngineGetNumInputs(axclrtEngineIOInfo ioInfo);
 
 - `input`: size with axclrtEngineIOInfo
 
-
 <br>
 
 <a id="axclrtEngineGetNumOutputs"></a>
@@ -777,7 +753,6 @@ AXCL_EXPORT uint32_t axclrtEngineGetNumOutputs(axclrtEngineIOInfo ioInfo);
 #### Returns
 
 - `output`: size with axclrtEngineIOInfo
-
 
 <br>
 
@@ -811,7 +786,6 @@ AXCL_EXPORT axclError axclrtEngineGetOutputBufferByIndex(axclrtEngineIO io, uint
 
 RestrictionThe data buffer is Device memory, and requires user application and release.
 
-
 <br>
 
 <a id="axclrtEngineGetOutputBufferByName"></a>
@@ -844,7 +818,6 @@ AXCL_EXPORT axclError axclrtEngineGetOutputBufferByName(axclrtEngineIO io, const
 
 RestrictionThe data buffer is Device memory, and requires user application and release.
 
-
 <br>
 
 <a id="axclrtEngineGetOutputDataLayout"></a>
@@ -876,7 +849,6 @@ AXCL_EXPORT axclError axclrtEngineGetOutputDataLayout(axclrtEngineIOInfo ioInfo,
 
 [axclrtEngineGetIOInfo](#axclrtEngineGetIOInfo) | axclrtEngineGetIOInfoByIndex | [axclrtEngineGetNumOutputs](#axclrtEngineGetNumOutputs)
 
-
 <br>
 
 <a id="axclrtEngineGetOutputDataType"></a>
@@ -907,7 +879,6 @@ AXCL_EXPORT axclError axclrtEngineGetOutputDataType(axclrtEngineIOInfo ioInfo, u
 #### Remark
 
 [axclrtEngineGetIOInfo](#axclrtEngineGetIOInfo) | axclrtEngineGetIOInfoByIndex | [axclrtEngineGetNumOutputs](#axclrtEngineGetNumOutputs)
-
 
 <br>
 
@@ -945,7 +916,6 @@ AXCL_EXPORT axclError axclrtEngineGetOutputDims(axclrtEngineIOInfo ioInfo, uint3
 
 RestrictionUsers should release the [axclrtEngineIODims](reference/struct.md#axclrtEngineIODims) after using it.
 
-
 <br>
 
 <a id="axclrtEngineGetOutputIndexByName"></a>
@@ -971,7 +941,6 @@ AXCL_EXPORT int32_t axclrtEngineGetOutputIndexByName(axclrtEngineIOInfo ioInfo, 
 
 - `output`: tensor index
 - `-1`: if not found
-
 
 <br>
 
@@ -1003,7 +972,6 @@ AXCL_EXPORT const char* axclrtEngineGetOutputNameByIndex(axclrtEngineIOInfo ioIn
 
 [axclrtEngineGetIOInfo](#axclrtEngineGetIOInfo) | axclrtEngineGetIOInfoByIndex | [axclrtEngineGetNumOutputs](#axclrtEngineGetNumOutputs)
 
-
 <br>
 
 <a id="axclrtEngineGetOutputSizeByIndex"></a>
@@ -1029,7 +997,6 @@ AXCL_EXPORT uint64_t axclrtEngineGetOutputSizeByIndex(axclrtEngineIOInfo ioInfo,
 #### Returns
 
 - `Specify`: the size of the output
-
 
 <br>
 
@@ -1065,7 +1032,6 @@ AXCL_EXPORT axclError axclrtEngineGetShapeGroupsCount(axclrtEngineIOInfo ioInfo,
 
 RestrictionPulsar2 toolchain can specify several shapes in model conversion a time. There is only one shape in a normal model, and so it's no needs to call this function for normally converted model.
 
-
 <br>
 
 <a id="axclrtEngineGetUsage"></a>
@@ -1092,7 +1058,6 @@ AXCL_EXPORT axclError axclrtEngineGetUsage(const char *modelPath, int64_t *sysSi
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -1126,7 +1091,6 @@ AXCL_EXPORT axclError axclrtEngineGetUsageFromMem(const void *model, uint64_t mo
 
 RestrictionThe model memory is Device memory, and requires user application and release.
 
-
 <br>
 
 <a id="axclrtEngineGetUsageFromModelId"></a>
@@ -1154,7 +1118,6 @@ AXCL_EXPORT axclError axclrtEngineGetUsageFromModelId(uint64_t modelId, int64_t 
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtEngineGetVNpuKind"></a>
@@ -1179,7 +1142,6 @@ AXCL_EXPORT axclError axclrtEngineGetVNpuKind(axclrtEngineVNpuKind *npuKind);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -1210,7 +1172,6 @@ AXCL_EXPORT axclError axclrtEngineInit(axclrtEngineVNpuKind npuKind);
 
 RestrictionUser needs to call axclrtEngineFinalize to finalize the runtime engine after using it
 
-
 <br>
 
 <a id="axclrtEngineLoadFromFile"></a>
@@ -1236,7 +1197,6 @@ AXCL_EXPORT axclError axclrtEngineLoadFromFile(const char *modelPath, uint64_t *
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -1268,7 +1228,6 @@ AXCL_EXPORT axclError axclrtEngineLoadFromMem(const void *model, uint64_t modelS
 #### Restriction
 
 RestrictionThe model memory is device memory, and requires user allocation and release
-
 
 <br>
 
@@ -1304,7 +1263,6 @@ AXCL_EXPORT axclError axclrtEngineSetAffinity(uint64_t modelId, axclrtEngineSet 
 
 RestrictionZero is not allowed, and the masked bit of the set cannot be out of the affinity range.
 
-
 <br>
 
 <a id="axclrtEngineSetContextAffinity"></a>
@@ -1336,7 +1294,6 @@ AXCL_EXPORT axclError axclrtEngineSetContextAffinity(uint64_t modelId, uint64_t 
 
 [axclrtEngineCreateContext](#axclrtEngineCreateContext) | [axclrtEngineSetContextAffinity](#axclrtEngineSetContextAffinity)
 
-
 <br>
 
 <a id="axclrtEngineSetDynamicBatchSize"></a>
@@ -1366,7 +1323,6 @@ AXCL_EXPORT axclError axclrtEngineSetDynamicBatchSize(axclrtEngineIO io, uint32_
 #### Remark
 
 [axclrtEngineCreateContext](#axclrtEngineCreateContext) |
-
 
 <br>
 
@@ -1400,7 +1356,6 @@ AXCL_EXPORT axclError axclrtEngineSetInputBufferByIndex(axclrtEngineIO io, uint3
 
 RestrictionThe data buffer is Device memory, and requires user application and release.
 
-
 <br>
 
 <a id="axclrtEngineSetInputBufferByName"></a>
@@ -1432,7 +1387,6 @@ AXCL_EXPORT axclError axclrtEngineSetInputBufferByName(axclrtEngineIO io, const 
 #### Restriction
 
 RestrictionThe data buffer is Device memory, and requires user application and release.
-
 
 <br>
 
@@ -1466,7 +1420,6 @@ AXCL_EXPORT axclError axclrtEngineSetOutputBufferByIndex(axclrtEngineIO io, uint
 
 RestrictionThe data buffer is Device memory, and requires user application and release.
 
-
 <br>
 
 <a id="axclrtEngineSetOutputBufferByName"></a>
@@ -1498,7 +1451,6 @@ AXCL_EXPORT axclError axclrtEngineSetOutputBufferByName(axclrtEngineIO io, const
 #### Restriction
 
 RestrictionThe data buffer is Device memory, and requires user application and release.
-
 
 <br>
 

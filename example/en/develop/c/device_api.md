@@ -16,7 +16,6 @@
 
 ## API
 
-
 <br>
 
 <a id="axclrtDeviceGetUid"></a>
@@ -43,7 +42,6 @@ AXCL_EXPORT axclError axclrtDeviceGetUid(int32_t deviceId, uint64_t *uid);
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtGetDevice"></a>
@@ -69,7 +67,6 @@ AXCL_EXPORT axclError axclrtGetDevice(int32_t *deviceId);
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtGetDeviceCount"></a>
@@ -94,7 +91,6 @@ AXCL_EXPORT axclError axclrtGetDeviceCount(uint32_t *count);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -125,7 +121,6 @@ AXCL_EXPORT axclError axclrtResetDevice(int32_t deviceId);
 
 Before deactive, all contexts and streams will wait for finished synchronization.
 All explicit created contexts and streams should be destroyed before deactive, that means: [axclrtDestroyStream](stream_api.md#axclrtDestroyStream) -> [axclrtDestroyContext](context_api.md#axclrtDestroyContext) -> [axclrtResetDevice](#axclrtResetDevice)
-
 
 <br>
 
@@ -162,7 +157,6 @@ Invoke [axclrtSetDevice](#axclrtSetDevice) to activate the same device in differ
 
 [axclrtResetDevice](#axclrtResetDevice) | [axclrtCreateContext](context_api.md#axclrtCreateContext)
 
-
 <br>
 
 <a id="axclrtSynchronizeDevice"></a>
@@ -185,7 +179,6 @@ N/A
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 

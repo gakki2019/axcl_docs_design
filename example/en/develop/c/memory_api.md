@@ -22,7 +22,6 @@
 
 ## API
 
-
 <br>
 
 <a id="axclrtFree"></a>
@@ -52,7 +51,6 @@ AXCL_EXPORT axclError axclrtFree(void *devPtr);
 
 [axclrtMalloc](#axclrtMalloc) | [axclrtMallocCached](#axclrtMallocCached)
 
-
 <br>
 
 <a id="axclrtFreeHost"></a>
@@ -81,7 +79,6 @@ AXCL_EXPORT axclError axclrtFreeHost(void *hostPtr);
 #### Remark
 
 [axclrtMallocHost](#axclrtMallocHost)
-
 
 <br>
 
@@ -132,7 +129,6 @@ axclrtFree(devMem);
 axclrtFreeHost(hostMem);
 ```
 
-
 <br>
 
 <a id="axclrtMallocCached"></a>
@@ -163,7 +159,6 @@ AXCL_EXPORT axclError axclrtMallocCached(void **devPtr, size_t size, axclrtMemMa
 #### Remark
 
 [axclrtFree](#axclrtFree)
-
 
 <br>
 
@@ -199,7 +194,6 @@ AXCL_EXPORT axclError axclrtMallocHost(void **hostPtr, size_t size);
 
 [axclrtFreeHost](#axclrtFreeHost)
 
-
 <br>
 
 <a id="axclrtMemFlush"></a>
@@ -229,7 +223,6 @@ AXCL_EXPORT axclError axclrtMemFlush(void *devPtr, size_t size);
 #### Note
 
 Only available for cached device memory.
-
 
 <br>
 
@@ -261,7 +254,6 @@ AXCL_EXPORT axclError axclrtMemInvalidate(void *devPtr, size_t size);
 
 Only available for cached device memory.
 
-
 <br>
 
 <a id="axclrtMemcmp"></a>
@@ -288,7 +280,6 @@ AXCL_EXPORT axclError axclrtMemcmp(const void *devPtr1, const void *devPtr2, siz
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -317,7 +308,6 @@ AXCL_EXPORT axclError axclrtMemcmpAsync(const void *devPtr1, const void *devPtr2
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -351,7 +341,6 @@ AXCL_EXPORT axclError axclrtMemcpy(void *dstPtr, const void *srcPtr, size_t coun
 
 [axclrtMalloc](#axclrtMalloc)
 
-
 <br>
 
 <a id="axclrtMemcpyAsync"></a>
@@ -380,7 +369,6 @@ AXCL_EXPORT axclError axclrtMemcpyAsync(void *dstPtr, const void *srcPtr, size_t
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -412,7 +400,6 @@ AXCL_EXPORT axclError axclrtMemset(void *devPtr, uint8_t value, size_t count);
 #### Note
 
 [axclrtMemset](#axclrtMemset) only support device memory.
-
 
 <br>
 

@@ -17,7 +17,6 @@
 
 ## API
 
-
 <br>
 
 <a id="axclAppLog"></a>
@@ -49,7 +48,6 @@ N/A
 #### Remark
 
 [axclSetLogLevel](#axclSetLogLevel)
-
 
 <br>
 
@@ -83,7 +81,6 @@ Do not call [axclFinalize](#axclFinalize) in destructor.
 
 [axclInit](#axclInit)
 
-
 <br>
 
 <a id="axclGetLogLevel"></a>
@@ -108,7 +105,6 @@ AXCL_EXPORT axclError axclGetLogLevel(int32_t *lv);
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
@@ -155,7 +151,6 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-
 <br>
 
 <a id="axclSetLogLevel"></a>
@@ -181,7 +176,6 @@ AXCL_EXPORT axclError axclSetLogLevel(int32_t lv);
 - `AXCL_SUCC`: success.
 - `others`: failure.
 
-
 <br>
 
 <a id="axclrtGetSocName"></a>
@@ -203,7 +197,6 @@ N/A
 #### Returns
 
 - Chip name string.
-
 
 <br>
 
@@ -231,7 +224,6 @@ AXCL_EXPORT axclError axclrtGetVersion(int32_t *major, int32_t *minor, int32_t *
 
 - `AXCL_SUCC`: success.
 - `others`: failure.
-
 
 <br>
 
