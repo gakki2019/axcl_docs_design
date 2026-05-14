@@ -1,4 +1,4 @@
-# event API
+# Event API
 
 <br>
 

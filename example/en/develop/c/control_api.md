@@ -1,4 +1,4 @@
-# control API
+# Control API
 
 <br>
 

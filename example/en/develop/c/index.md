@@ -4,14 +4,14 @@
 
 ## API Pages
 
-- [context API](context_api.md)
-- [control API](control_api.md)
-- [device API](device_api.md)
-- [engine API](engine_api.md)
-- [event API](event_api.md)
-- [memory API](memory_api.md)
-- [stream API](stream_api.md)
-- [system API](system_api.md)
+- [Context API](context_api.md)
+- [Control API](control_api.md)
+- [Device API](device_api.md)
+- [Engine API](engine_api.md)
+- [Event API](event_api.md)
+- [Memory API](memory_api.md)
+- [Stream API](stream_api.md)
+- [System API](system_api.md)
 
 <br>
 
