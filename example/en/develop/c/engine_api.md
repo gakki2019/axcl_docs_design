@@ -1,7 +1,5 @@
 # Engine API
 
-<br>
-
 ## Index
 
 - [axclrtEngineCreateContext](#axclrtEngineCreateContext)
@@ -56,8 +54,6 @@
 <br>
 
 ## API
-
-<br>
 
 <a id="axclrtEngineCreateContext"></a>
 

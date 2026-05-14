@@ -1,7 +1,5 @@
 # Control API
 
-<br>
-
 ## Index
 
 - [axclrtControlExecuteShellCmd](#axclrtControlExecuteShellCmd)
@@ -9,8 +7,6 @@
 <br>
 
 ## API
-
-<br>
 
 <a id="axclrtControlExecuteShellCmd"></a>
 

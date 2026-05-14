@@ -1,7 +1,5 @@
 # Stream API
 
-<br>
-
 ## Index
 
 - [axclrtCreateStream](#axclrtCreateStream)
@@ -13,8 +11,6 @@
 <br>
 
 ## API
-
-<br>
 
 <a id="axclrtCreateStream"></a>
 

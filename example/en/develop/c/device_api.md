@@ -1,7 +1,5 @@
 # Device API
 
-<br>
-
 ## Index
 
 - [axclrtDeviceGetUid](#axclrtDeviceGetUid)
@@ -15,8 +13,6 @@
 <br>
 
 ## API
-
-<br>
 
 <a id="axclrtDeviceGetUid"></a>
 

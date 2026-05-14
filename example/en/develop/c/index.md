@@ -1,7 +1,5 @@
 # AXCL API Index
 
-<br>
-
 ## API Pages
 
 - [Context API](context_api.md)

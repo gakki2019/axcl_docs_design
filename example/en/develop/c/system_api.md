@@ -1,7 +1,5 @@
 # System API
 
-<br>
-
 ## Index
 
 - [axclAppLog](#axclAppLog)
@@ -16,8 +14,6 @@
 <br>
 
 ## API
-
-<br>
 
 <a id="axclAppLog"></a>
 

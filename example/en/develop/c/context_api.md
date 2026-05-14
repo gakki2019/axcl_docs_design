@@ -1,7 +1,5 @@
 # Context API
 
-<br>
-
 ## Index
 
 - [axclrtCreateContext](#axclrtCreateContext)
@@ -12,8 +10,6 @@
 <br>
 
 ## API
-
-<br>
 
 <a id="axclrtCreateContext"></a>
 

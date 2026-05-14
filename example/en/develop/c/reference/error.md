@@ -1,7 +1,5 @@
 # Error Code Reference
 
-<br>
-
 ## COMM
 
 | Symbol | Host Hex | Host Int32 | Device Hex | Device Int32 | Description |

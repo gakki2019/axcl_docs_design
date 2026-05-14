@@ -1,7 +1,5 @@
 # Memory API
 
-<br>
-
 ## Index
 
 - [axclrtFree](#axclrtFree)
@@ -21,8 +19,6 @@
 <br>
 
 ## API
-
-<br>
 
 <a id="axclrtFree"></a>
 

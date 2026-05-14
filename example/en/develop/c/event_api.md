@@ -1,22 +1,42 @@
 # Event API
 
-<br>
-
 ## Index
 
-- [axclrtCreateEvent](#axclrtCreateEvent)
-- [axclrtDestroyEvent](#axclrtDestroyEvent)
-- [axclrtRecordEvent](#axclrtRecordEvent)
-- [axclrtStreamWaitEvent](#axclrtStreamWaitEvent)
-- [axclrtStreamWaitEventWithTimeout](#axclrtStreamWaitEventWithTimeout)
-- [axclrtSynchronizeEvent](#axclrtSynchronizeEvent)
-- [axclrtSynchronizeEventWithTimeout](#axclrtSynchronizeEventWithTimeout)
+- [Event API](#event-api)
+  - [Index](#index)
+  - [API](#api)
+    - [axclrtCreateEvent](#axclrtcreateevent)
+      - [Function](#function)
+      - [Parameters](#parameters)
+      - [Returns](#returns)
+    - [axclrtDestroyEvent](#axclrtdestroyevent)
+      - [Function](#function-1)
+      - [Parameters](#parameters-1)
+      - [Returns](#returns-1)
+    - [axclrtRecordEvent](#axclrtrecordevent)
+      - [Function](#function-2)
+      - [Parameters](#parameters-2)
+      - [Returns](#returns-2)
+    - [axclrtStreamWaitEvent](#axclrtstreamwaitevent)
+      - [Function](#function-3)
+      - [Parameters](#parameters-3)
+      - [Returns](#returns-3)
+    - [axclrtStreamWaitEventWithTimeout](#axclrtstreamwaiteventwithtimeout)
+      - [Function](#function-4)
+      - [Parameters](#parameters-4)
+      - [Returns](#returns-4)
+    - [axclrtSynchronizeEvent](#axclrtsynchronizeevent)
+      - [Function](#function-5)
+      - [Parameters](#parameters-5)
+      - [Returns](#returns-5)
+    - [axclrtSynchronizeEventWithTimeout](#axclrtsynchronizeeventwithtimeout)
+      - [Function](#function-6)
+      - [Parameters](#parameters-6)
+      - [Returns](#returns-6)
 
 <br>
 
 ## API
-
-<br>
 
 <a id="axclrtCreateEvent"></a>
 
